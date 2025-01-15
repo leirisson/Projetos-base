@@ -89,7 +89,7 @@ function App() {
   const sendToWhatsApp = () => {
     if (cart.length === 0) return;
 
-    const phoneNumber = "5511999999999"; // Substitua pelo número do WhatsApp do estabelecimento
+    const phoneNumber = "5592993129862"; // Substitua pelo número do WhatsApp do estabelecimento
     
     let message = "🛍️ *Novo Pedido*\n\n";
     
