@@ -56,6 +56,16 @@ function App() {
       category: "Sobremesas",
       icon: <IceCream className="w-6 h-6" />
     },
+    {
+      id: 4,
+      name: "refri",
+      description: "gelado",
+      price: 5.00,
+      image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      category: "Sobremesas",
+      icon: <IceCream className="w-6 h-6" />
+    },
+
   ];
 
   const addToCart = (item: MenuItem) => {
