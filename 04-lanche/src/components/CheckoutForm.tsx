@@ -46,7 +46,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
     // Encode the message for WhatsApp
     const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = '5511999999999'; // Replace with the actual WhatsApp number
+    const whatsappNumber = '5592993129862'; // Replace with the actual WhatsApp number
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
     // Open WhatsApp in a new tab
