@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CartItem, PaymentMethod } from '../types';
+import { OrderCounter } from '../utils/orderCounter';
 
 interface CheckoutFormProps {
   items: CartItem[];
@@ -19,8 +20,13 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
     changeAmount: '',
   });
 
+  const orderCounter = new OrderCounter();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Increment order count
+    const orderNumber = orderCounter.incrementOrderCount();
     
     // Format the order message for WhatsApp
     const itemsList = items
@@ -30,7 +36,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
       })
       .join('\n');
 
-    const message = `*Novo Pedido - Zeen Lanches*\n\n` +
+    const message = `*Novo Pedido #${orderNumber} - Zeen Lanches*\n\n` +
       `*Cliente:* ${formData.name}\n` +
       `*Endereço:* ${formData.address}\n\n` +
       `*Itens do Pedido:*\n${itemsList}\n\n` +
@@ -40,10 +46,8 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
     // Encode the message for WhatsApp
     const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = '+5592993129862'; // Replace with the actual WhatsApp number
+    const whatsappNumber = '5511999999999'; // Replace with the actual WhatsApp number
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-    // const whatsappUrl = `https://api.whatsapp.com/send/?phone=%2B55${whatsappNumber}&text=${encodedMessage}&type=phone_number&app_absent=0`
 
     // Open WhatsApp in a new tab
     window.open(whatsappUrl, '_blank');
@@ -112,6 +116,10 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           />
         </div>
       )}
+
+      <div className="text-sm text-gray-500 mb-4">
+        Pedido #{orderCounter.getTodayOrderCount() + 1} do dia
+      </div>
 
       <button
         type="submit"
