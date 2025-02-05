@@ -71,7 +71,7 @@ function App() {
 
     // Encode the message for WhatsApp
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodedMessage}`; // Replace with actual number
+    const whatsappUrl = `https://wa.me/5592993129862?text=${encodedMessage}`; // Replace with actual number
 
     // Open WhatsApp in a new window
     window.open(whatsappUrl, '_blank');
